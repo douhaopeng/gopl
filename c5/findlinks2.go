@@ -14,14 +14,14 @@ func visit(links []string, n *html.Node) []string{
 			}
 		}
 	}
-	for c := n.FirstChild; c != nil; c = c.NextSibing {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		links = visit(links, c)
 	}
 	return links
 }
 
 func main(){
-	for _, url := range os.Arg[1:]{
+	for _, url := range os.Args[1:]{
 		links, err := findLinks(url)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "findlinks2: %v\n", err)
